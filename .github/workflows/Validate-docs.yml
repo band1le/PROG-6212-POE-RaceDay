@@ -1,0 +1,56 @@
+name: Validate Part 1 Repository Structure
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  validate-repo-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Checks/docs folder exist
+        run: |
+          if [ ! -d "docs" ]; then
+            echo "Error: 'docs' folder does not exist."
+            exit 1
+          fi
+          echo "docs folder exists."
+
+          -name: checks required planning files are present
+           run: |
+              required_files=(
+                  "docs/POE DIAGRAMS.drawio(1).png"
+                  "docs/API_Endpoints_Plan.md"
+                  "docs/RaceDay_SQL_Script.sql"
+              )
+
+              mising=0
+              for f in "${required_files[@]}"; do
+                  if [ ! -f "$f" ]; then
+                      echo "Error: Required file '$f' is missing."
+                      mising=1
+                  else
+                  echo "Required file '$f' exists."
+                  fi
+                  done
+              if [ $missing -eq 1 ]; then
+                  exit 1
+              fi
+
+              -name: Check SQL script is non-empty
+              run: |
+                  if [ ! -s "docs/RaceDay_SQL_Script.sql" ]; then
+                      echo "Error: 'docs/RaceDay_SQL_Script.sql' is empty."
+                      exit 1
+                  fi
+                  echo "'docs/RaceDay_SQL_Script.sql' is non-empty."
+
+                  -name: ALL checks passed
+                  run: echo "All checks passed. Repository structure is valid."
