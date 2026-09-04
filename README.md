@@ -27,7 +27,7 @@ Validate-docs.yml - GitHub Actions workflow to validate documentation files
 
 /docs
 API_Endpoint_Plan.md - API endpoint plan
-POE DIAGRAMS.drawio(1).png- Entity Relationship Diagram(ERD)
+ERD_RaceDay.png- Entity Relationship Diagram(ERD)
 RaceDay_SQL_Script.sql - SQL script to create and seed the database
 
 .gitignore - Specifies intentionally untracked files to ignore
@@ -49,7 +49,7 @@ The SQL script matches the ERD exactly-no deviations.
 A Github Actions workflow(Validate-docs.yml) runs on every push and validates that the /docs folder exists and contains the ERD,endpoint plan and SQL script files. If any of these files are missing or renamed, the workflow will fail and notify the user.
 
 # VideoWalkthrough
-YouTube (unlisted):[insert here]
+YouTube (unlisted):https://youtu.be/1xWd4uoFLrA
 The video walks through the planning documents: the ERD design decision,the end point
 plan choice and runs teh SQL script live in SSMS.
 

@@ -22,7 +22,7 @@ jobs:
             echo "Error: 'docs' folder does not exist."
             exit 1
           fi
-          echo "✅ docs folder exists."
+          echo "docs folder exists."
 
       - name: Check required planning files are present
         run: |
