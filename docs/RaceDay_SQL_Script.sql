@@ -8,14 +8,15 @@ USE RaceDay;
 /*Creation of Roles table*/
 CREATE TABLE Roles(
 RolesID INT IDENTITY(1,1)PRIMARY KEY,
-RoleName VARCHAR(50)NOT NULL UNIQUE
+RoleName VARCHAR(50) NOT NULL CHECK (RoleName IN ('Organiser', 'Participant'))
 );
 
 
 /*Creation of Users table*/
+/*Users <-> Roles is ONE-TO-ONE: every User has exactly one Roles record of their own.RolesID is NOT NULL (every user has a role) and UNIQUE (a Roles record belongs to one user only).RoleName is therefore NOT unique - many users can be 'Organiser' - but each has their own row.*/
 CREATE TABLE Users (
 UserID          INT IDENTITY(1,1) PRIMARY KEY,
-RolesID          INT NOT NULL,
+RolesID          INT NOT NULL UNIQUE,
 FullName        VARCHAR(100) NOT NULL,
 Email           VARCHAR(100) NOT NULL UNIQUE,
 PasswordHash    VARCHAR(255) NOT NULL,
@@ -27,13 +28,16 @@ CONSTRAINT FK_Users_Roles FOREIGN KEY (RolesID) REFERENCES Roles(RolesID)
 
 
 /*Creation of evnts table*/
+/*PART 2 CHANGE: added Distance and EventType. The Part 2 functional requirements say everyevent must capture "a name, description, date, location, distance, and event type(run, walk, or cycle)". Both columns are mirrored in the EF Core model and the ERD.*/
 CREATE TABLE Events (
- EventsID         INT IDENTITY(1,1) PRIMARY KEY,
+EventsID        INT IDENTITY(1,1) PRIMARY KEY,
  OrganiserID     INT NOT NULL,
  EventName       VARCHAR(150) NOT NULL,
  Description     VARCHAR(1000) NULL,
  EventDate       DATE NOT NULL,
  Location        VARCHAR(150) NOT NULL,
+ Distance        DECIMAL(6,2) NULL CHECK (Distance > 0),
+ EventType       VARCHAR(10) NOT NULL CHECK (EventType IN ('Run', 'Walk', 'Cycle')),
  CreatedAt       DATETIME NOT NULL DEFAULT GETDATE(),
  
 CONSTRAINT FK_Events_Users FOREIGN KEY (OrganiserID)REFERENCES Users(UserID)
@@ -41,6 +45,7 @@ CONSTRAINT FK_Events_Users FOREIGN KEY (OrganiserID)REFERENCES Users(UserID)
 
 
 /*Creation of Categories Table*/
+/*PART 2 CHANGE: DistanceKm is now NULLable so an age-based category (e.g. 'Senior','Under 20') can exist without a distance. The CHECK still applies whenever a value is given.*/
 CREATE TABLE Categories (
 CategoryID      INT IDENTITY(1,1) PRIMARY KEY,
 EventsID         INT NOT NULL,
