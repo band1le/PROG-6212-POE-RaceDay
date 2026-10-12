@@ -1,0 +1,14 @@
+﻿@page
+@model RaceDay.Views.Shared.NotFoundModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Not Found";
+}
+    
+<div class="container mt-5 text-center">V
+    <h1 class="text-danger">Not found!</h1>
+    <p class="lead">@ViewBag.ErrorMessage</p>
+    <a asp-controller="UserRoles "asp-action="Index" class="btn btn-primary">Back to Users</a>
+</div>
