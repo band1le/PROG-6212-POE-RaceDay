@@ -20,10 +20,10 @@ namespace RaceDay.Areas.Identity.Pages.Account;
 
 public class LoginModel : PageModel
 {
-    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly ILogger<LoginModel> _logger;
 
-    public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+    public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
     {
         _signInManager = signInManager;
         _logger = logger;
@@ -112,14 +112,14 @@ public class LoginModel : PageModel
         {
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-            var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-
+            var  result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+            
             if (result.Succeeded)
             {
                 if (User.IsInRole("Admin"))
                 {
                     _logger.LogInformation("User Admin logged in.");
-                    return RedirectToAction("AdminDashBoard","Home");
+                    return RedirectToAction("AdminDashboard","Home");
                 }
                 else if (User.IsInRole("Participant"))
                 {
@@ -129,8 +129,8 @@ public class LoginModel : PageModel
                 else if (User.IsInRole("Organiser"))
                 {
                     _logger.LogInformation("User Organiser logged in.");
-                    return RedirectToAction("OrganiserDashBoard","Home");
-                }   
+                    return RedirectToAction("OrganiserDashboard", "Home");
+                }
             }
             if (result.RequiresTwoFactor)
             {

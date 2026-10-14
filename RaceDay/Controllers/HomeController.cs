@@ -1,12 +1,18 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RaceDay.Models;
 using System.Diagnostics;
+
 
 namespace RaceDay.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult AdminDashboard()
+        {
+            return View();
+        }
+        public IActionResult OrganiserDashboard()
         {
             return View();
         }

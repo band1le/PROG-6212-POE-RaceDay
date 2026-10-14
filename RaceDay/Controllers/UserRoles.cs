@@ -4,18 +4,20 @@ using Microsoft.EntityFrameworkCore;
 using RaceDay.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using System.Runtime.InteropServices;
+using RaceDay.Data;
+
 
 namespace RaceDay.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class UserRoles : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         private readonly RoleManager<IdentityRole> _roleManager;
 
         public UserRoles(
-            UserManager<IdentityUser> userManager,
+            UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager
             )
         {
