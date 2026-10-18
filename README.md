@@ -62,3 +62,108 @@ DeepSeek(AI https://www.deepseek.com/) was used to help with dtructuring [descri
 ALL design(entity choices,relationships cardinalities,role permissions,and
 endpoint scope) were reviewd,tested and are understood and can be explained by the author
 (Bandile Simphiwe Ngubane ST10479433).THE DATABASE script was run and verified in SSMS by the authour before submission.
+
+
+# RaceDay-Part 2
+RaceDay is a web-based event management system for South African road running, walking and cycling events.
+Organisers create and manage events, and Participants browse events, enter them and follow their results.
+This is Part 2 of the PROG6212 Portfolio of Evidence, built with ASP.NET Core MVC, Entity Framework Core (Code-First)
+and ASP.NET Core Identity on SQL Server.
+
+**Repository:** [https://github.com/band1le/PROG-6212-POE-RaceDay.git]
+
+**Video walkthrough (unlisted YouTube):** [FILL IN: YouTube link]
+
+## The Roles
+ Role |What they can do |
+
+**Organiser**  Create, edit and delete events; manage event categories; capture finish times and positions; view all enrolments for their events |
+**Participant** Create an account, browse events, enter an event by selecting a category, view their own enrolments, track their own results |
+
+Both roles can view and update their own profile. Role-based access is enforced on the server (`[Authorize(Roles = ...)]`),
+so a Participant cannot reach Organiser pages and an Organiser cannot reach Participant pages.
+
+[FILL IN or DELETE: The project also seeds an **Admin** role that manages user roles through the User Roles page.]
+
+## Features
+features available in my project please note we were told not to do Swagger
+
+- [ ] Registration and login (ASP.NET Core Identity), passwords hashed by Identity
+- [ ] Role-based access for Organiser and Participant
+- [ ] User profile: view and update own details
+- [ ] Events: create, edit, delete (Organiser); view (both roles)
+- [ ] Categories per event (Organiser); view (both roles)
+- [ ] Event enrolments: Participant enters by selecting a category; Organiser views all enrolments for their events
+- [ ] Results: Organiser captures finish times and positions; Participant views their own
+- [ ] Unit tests (xUnit) and GitHub Actions CI (42 unit test passeed 2 failed)
+
+## Technology
+ASP.NET Core MVC, **.NET [FILL IN: version from RaceDay.csproj, e.g. 10.0]**
+- Entity Framework Core, Code-First with migrations
+- SQL Server (LocalDB or SQL Server Express)
+- ASP.NET Core Identity (users and roles)
+- [FILL IN: Swashbuckle (Swagger), xUnit]
+
+## Project Structure
+PROG-6212-POE-RaceDay/
+├── RaceDay/
+│   ├── Areas/              Identity pages (register, login)
+│   ├── Controllers/        MVC controllers
+│   ├── Data/               ApplicationDbContext, ApplicationUser, Migrations
+│   ├── Models/             Entities, view models, services (IProfileImageService)
+│   ├── Views/              Razor views
+│   ├── wwwroot/            Static files
+│   ├── appsettings.json    Connection string
+│   └── Program.cs          Services, Identity, role seeding, pipeline
+├── [FILL IN: RaceDay.Tests/    Unit tests (xUnit)]
+├── .github/workflows/      GitHub Actions workflow(s)
+└── docs/                   Part 1 planning documents (ERD, endpoint plan, SQL script) and screenshots
+
+## Setup and run instractions
+
+## Prerequisites
+1. Visual Studio with the **ASP.NET and web development** workload
+2. The **.NET SDK** that matches the project ([FILL IN: version])
+3. **SQL Server LocalDB** (installed with Visual Studio) or SQL Server Express
+
+## Steps
+1. Clone the repository:
+```
+   git clone [https://github.com/band1le/PROG-6212-POE-RaceDay.git]
+```
+2. Open the `.sln` file in Visual Studio and let NuGet restore the packages.
+3. Open `RaceDay/appsettings.json` and check `ConnectionStrings:DefaultConnection` points to your SQL Server.
+   The default is LocalDB, so most machines need no change.
+4. Create the database. The app applies migrations automatically on startup. To do it manually, open
+   **Tools > NuGet Package Manager > Package Manager Console** and run:
+```
+   Update-Database
+```
+5. Press **F5** (or run `dotnet run` inside the `PROG-6212-POE-RaceDay.slnx` folder).
+6. Log in:
+   - Demo admin account seeded on first run: `admin@Admin.com` / `Admin1@` (for marking and demonstration only)
+   - To try the main roles, register two accounts: [FILL IN: how the role is chosen, e.g. "pick Organiser or Participant on the Register page" or "the Admin assigns it on the User Roles page"].
+
+### Swagger was not added
+
+## Running the unit tests
+In Visual Studio: **Test >Test Explore> Run All Tests** in the PROG-6212-POE-RaceDay.slnx
+42 passed 2 failed
+
+## CI/CD
+The workflow in `.github/workflows/[FILL IN: file name].yml` runs on every push. It builds the solution and runs all
+unit tests.
+
+# Notes on changes from Part 1
+
+[FILL IN: one or two lines, for example: "Part 2 uses ASP.NET Core Identity, so the Part 1 Users and Roles tables are
+implemented as the Identity tables (AspNetUsers, AspNetRoles, AspNetUserRoles). The Events, Categories, Enrolments and
+Results tables follow the Part 1 ERD."] Delete this section if nothing changed.
+
+# AI tool disclosure
+
+As required by the assignment instructions, AI tools were used in this part:
+- **Claude(Antropic https://claude.ai/):** [used for structuring]
+- **DeepSeek(AI https://www.deepseek.com/):** [used for errors and code comparasion]
+
+All code was reviewed and is understood by Bandile Ngubane ST10479433, and the project was built following the lecturer's tutorial videos.
