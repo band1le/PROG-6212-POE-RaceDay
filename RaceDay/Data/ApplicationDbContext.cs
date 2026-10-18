@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RaceDay.Models;
+  
 
 namespace RaceDay.Data
 {
@@ -7,6 +9,11 @@ namespace RaceDay.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
+        public DbSet<Event> Events => Set<Event>();
+        public DbSet<Category> Categories => Set<Category>();
+        public DbSet<Enrolment> Enrolments => Set<Enrolment>();
+        public DbSet<Result> Results => Set<Result>();
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -69,7 +69,7 @@ namespace RaceDay.Controllers
             {
                 var userRolesViewModel = new ManageUserRolesViewModel
                 {
-                    RoleID = role.Id,
+                    RoleID=role.Id,
                     RoleName = role.Name ?? ""
                 };
                 if(await _userManager.IsInRoleAsync(user, role.Name!))
