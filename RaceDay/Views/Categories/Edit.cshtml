@@ -1,0 +1,42 @@
+﻿@model RaceDay.Models.Category
+
+@{
+    ViewData["Title"] = $"Edit category - {ViewBag.EventName}";
+}
+
+<h1 class="h3">Edit category</h1>
+<p class="text-muted">Event: <strong>@ViewBag.EventName</strong></p>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="EventId" />
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Kind" class="form-label"></label>
+                <!-- This line automatically loads Age and Distance -->
+                <select asp-for="Kind" asp-items="Html.GetEnumSelectList<RaceDay.Models.CategoryKind>()" class="form-select">
+                    <option value="">-- Select a category type --</option>
+                </select>
+                <span asp-validation-for="Kind" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <a asp-action="Index" asp-route-eventId="@Model.EventId" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

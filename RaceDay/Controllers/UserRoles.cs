@@ -58,7 +58,7 @@ namespace RaceDay.Controllers
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"User with Id{userId} cannot be found!!";
-                return View("Not Found");
+                return View("NotFound");
             }
 
             ViewBag.UserName = user.UserName;
