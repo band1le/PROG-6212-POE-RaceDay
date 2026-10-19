@@ -72,7 +72,7 @@ and ASP.NET Core Identity on SQL Server.
 
 **Repository:** [https://github.com/band1le/PROG-6212-POE-RaceDay.git]
 
-**Video walkthrough (unlisted YouTube):** [FILL IN: YouTube link]
+**Video walkthrough (unlisted YouTube):** https://youtu.be/3pb5Cf08W4I
 
 ## The Roles
  Role |What they can do |
@@ -148,10 +148,10 @@ PROG-6212-POE-RaceDay/
 
 ## Running the unit tests
 In Visual Studio: **Test >Test Explore> Run All Tests** in the PROG-6212-POE-RaceDay.slnx
-42 passed 2 failed
+All 44 test passed
 
 ## CI/CD
-The workflow in `.github/workflows/[FILL IN: file name].yml` runs on every push. It builds the solution and runs all
+The workflow in `.github/workflows/dotnet.yml` runs on every push. It builds the solution and runs all
 unit tests.
 
 # Notes on changes from Part 1
