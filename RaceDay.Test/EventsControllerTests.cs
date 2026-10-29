@@ -9,7 +9,7 @@ namespace RaceDay.Tests;
 public class EventsControllerTests
 {
     // Safe only for methods that return before using _db or _users
-    private static EventsController CreateController() => new(null!, null!);
+    private static EventsController CreateController() => new (null!, null!);
 
     // ---------- Details ----------
 
