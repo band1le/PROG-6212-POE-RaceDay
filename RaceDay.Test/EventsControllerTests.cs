@@ -9,7 +9,7 @@ namespace RaceDay.Tests;
 public class EventsControllerTests
 {
     // Safe only for methods that return before using _db or _users
-    private static EventsController CreateController() => new (null!, null!);
+    private static EventsController CreateController() => new (null!, null!,null!);
 
     // ---------- Details ----------
 
@@ -67,7 +67,7 @@ public class EventsControllerTests
         controller.ModelState.AddModelError("Name", "Name is required");
         var ev = new Event();
 
-        var result = await controller.Create(ev);
+        var result = await controller.Create(ev,null!);
 
         var view = Assert.IsType<ViewResult>(result);
         Assert.Same(ev, view.Model);   // the form is redisplayed with what the user typed
