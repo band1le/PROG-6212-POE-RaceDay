@@ -2,7 +2,18 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- RaceDay Hero Section -->
+<div class="p-5 mb-4 rounded-3 shadow text-center" style="background: linear-gradient(135deg, #1D3557 0%, #457B9D 100%); color: white;">
+    <div class="container-fluid py-4">
+        <h1 class="display-3 fw-bold">Find Your Next Challenge</h1>
+        <p class="fs-4 mt-3">Browse upcoming races and secure your spot at the starting line.</p>
+
+        <!-- This button sends them to your Events page where the data actually is -->
+        <a asp-controller="Events" asp-action="Index" class="btn btn-light btn-lg fw-bold text-dark mt-3 px-4">View Upcoming Races</a>
+    </div>
+</div>
+
+<div class="container text-center mt-5">
+    <h3 class="fw-bold">Welcome to the RaceDay Platform</h3>
+    <p class="text-muted">Please log in or register to view and enrol in events.</p>
 </div>
