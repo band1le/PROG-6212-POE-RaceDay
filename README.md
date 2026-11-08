@@ -218,13 +218,19 @@ To run this application locally, you need to provide an Azure Storage Connection
 4. The application will be accessible at http://localhost:8080
 
 
-Proof of Containerization
+## Proof of Containerization
 
 Docker Images:
-(pasted in the word document)
+![Docker Images](Docker 3.png)
+
 
 Docker Containers
-(Pasted in the word document)
+![Docker Containers](Doker.png)
+![Docker Containers](Doker 2.png)
+
+## Mircosoft Azure Explorer screenshots
+![Azure Explorer](Microsoft-Azure Explorer.png)
+
 
 ## Acknowledgements & References
 As required by the assignment instructions, AI tools were used in this part:
