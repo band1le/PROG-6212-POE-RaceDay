@@ -167,3 +167,69 @@ As required by the assignment instructions, AI tools were used in this part:
 - **DeepSeek(AI https://www.deepseek.com/):** [used for errors and code comparasion]
 
 All code was reviewed and is understood by Bandile Ngubane ST10479433, and the project was built following the lecturer's tutorial videos.
+
+
+
+# RaceDay-Part 3
+
+## Project Overview
+This project is the final Portfolio of Evidence (POE) for PROG-6212. It is an ASP.NET Core MVC web application designed for managing race events, participants, and organizers. 
+
+## Github Repository && Video Walkthrough
+**Repository:** [https://github.com/band1le/PROG-6212-POE-RaceDay.git]
+
+**Video walkthrough (unlisted YouTube):**[https://youtu.be/984CyKgzwq0]
+
+**Architecture & Design Note:** 
+* The application features a custom UI design implemented independently to ensure a professional user experience across all dashboards (Admin, Organizer, and Participant).
+* While the assignment rubric mentions a 3-tier architecture with a RESTful API, this implementation connects the MVC application directly to the data access layer to align with the provided lecture video series and time constraints.
+
+## Freatures Implemented
+* **Session Management:** Secure user authentication and role-based access control that persists across pages without logging the user out.
+* **Azure Blob Storage Integration:** Cloud-based storage for uploading and retrieving event banner images.
+* **Docker Containerization:** The application is fully containerized using a generated `Dockerfile` to ensure it runs consistently across any environment.
+
+## Technologies Used
+* C# / ASP.NET Core MVC
+* Entity Framework Core (SQL Server)
+* Azure Blob Storage (Azure.Storage.Blobs)
+* Docker
+* Microsoft Azure Storage Explorer for managing blob storage
+
+## How to run This Application
+
+### 1. Running Locally (Visual Studio)
+To run this application locally, you need to provide an Azure Storage Connection String using User Secrets.
+1. Right-click the `RaceDay` project in Visual Studio and select **Manage User Secrets**.
+2. Add your Azure connection string to the `secrets.json` file:
+   ```json
+   {
+     "AzureStorage": {
+       "ConnectionString": "YOUR_AZURE_CONNECTION_STRING_HERE"
+     }
+   }
+3.Press F5 to run the application.
+
+
+## Running in Docker
+1. To run the containerized application, open a terminal in the project folder and run the following command. (Note: You must replace the connection string placeholder with a valid Azure key to test the image upload feature).
+2. docker run -d -p 8080:8080 --name RaceDayApp -e "AzureStorage__ConnectionString=YOUR_AZURE_CONNECTION_STRING_HERE" RaceDay
+3. Command line= docker run -d -p 8088:8080 --RaceDay mvc-app my-mvc-app
+4. The application will be accessible at http://localhost:8080
+
+
+Proof of Containerization
+
+Docker Images:
+(pasted in the word document)
+
+Docker Containers
+(Pasted in the word document)
+
+## Acknowledgements & References
+As required by the assignment instructions, AI tools were used in this part:
+- **Claude(Antropic https://claude.ai/):** [used for structuring]
+- **DeepSeek(AI https://www.deepseek.com/):** [used for errors and code comparasion]
+
+All code was reviewed and is understood by Bandile Ngubane ST10479433, and the project was built following the lecturer's tutorial videos.
+
